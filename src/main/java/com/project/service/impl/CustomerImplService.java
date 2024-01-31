@@ -22,21 +22,21 @@ public class CustomerImplService implements IServiceCustomer {
 
     @Override
     public List<Customer> findAll() {
-        return null;
+        return (List<Customer>) customerDao.findAll();
     }
 
     @Override
     public Customer findById(Long id) {
-        return null;
+        return customerDao.findById(id).get();
     }
 
     @Override
     public void deleteById(Long id) {
-
+        customerDao.deleteById(id);
     }
 
     @Override
     public Customer update(Customer customer) {
-        return null;
+        return customerDao.save(customer);
     }
 }
