@@ -35,8 +35,9 @@ public class CustomerController {
         serviceCustomer.deleteById(id);
     }
 
-    //corregir este endpoint
-    @PutMapping
+    //localhost:8080/api/v1/customerupdate
+    //endpoint corregido
+    @PutMapping("customerupdate")
     public Customer updateCustomer(@RequestBody Customer customer) {
         //obetenemos el customer
         Customer customerdb = serviceCustomer.findById(customer.getId());

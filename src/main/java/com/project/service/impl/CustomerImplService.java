@@ -1,5 +1,6 @@
 package com.project.service.impl;
 
+import com.project.exception.ResorceNotFoundException;
 import com.project.model.dao.CustomerDao;
 import com.project.model.entity.Customer;
 import com.project.service.IServiceCustomer;
@@ -27,7 +28,13 @@ public class CustomerImplService implements IServiceCustomer {
 
     @Override
     public Customer findById(Long id) {
-        return customerDao.findById(id).get();
+        Customer customer = customerDao.findById(id).orElseThrow(
+                //recibe funcion lambda
+                () -> {
+                    throw new ResorceNotFoundException();
+                }
+        );
+        return customerDao.findById(id).orElse(null);
     }
 
     @Override
