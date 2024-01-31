@@ -31,10 +31,11 @@ public class CustomerImplService implements IServiceCustomer {
         Customer customer = customerDao.findById(id).orElseThrow(
                 //recibe funcion lambda
                 () -> {
-                    throw new ResorceNotFoundException();
+                    throw new ResorceNotFoundException("Customer con id " + id + " no se encuentra");
                 }
         );
-        return customerDao.findById(id).orElse(null);
+        //return customerDao.findById(id).orElse(null);
+        return customer;
     }
 
     @Override
